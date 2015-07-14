@@ -25,25 +25,25 @@ public class Leetcode001 {
 	}
 	
 	int partition(Node[] num, int start, int end) {
-		int temp;
+		Node temp;
 		int x = num[end].number;
 		int i = start - 1;
 		for(int j = start; j < end; j++) {
 			if (num[j].number <= x) {
 				i++;
-				temp = num[i].number;
-				num[i].number = num[j].number;
-				num[j].number = temp;
+				temp = num[i];
+				num[i] = num[j];
+				num[j] = temp;
 			}
 		}
-		temp = num[i+1].number;
-		num[i+1].number = num[end].number;
-		num[end].number = temp;
+		temp = num[i+1];
+		num[i+1] = num[end];
+		num[end] = temp;
 		return i+1;
 	}
 	
 	public static void main(String args[]) {
-		int array[] = {2, 7, 11, 15};
+		int array[] = {2, 11, 7, 15};
 		int target = 9;
 		Node nod[] = new Node[array.length];
 		for(int i=0; i<array.length; i++)
