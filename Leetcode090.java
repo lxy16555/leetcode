@@ -7,12 +7,12 @@ public class Leetcode090 {
     public void addSubsets(int[] nums, int start, List<List<Integer>> ans) {
         if (start > nums.length)
             return;
-        if (ans.contains(temp))
-            return;
             
         ans.add(new ArrayList<>(temp));
         
         for (int i=start; i<nums.length; i++) {
+            if (i>start && nums[i] == nums[i-1])
+                continue;
             temp.add(nums[i]);
             addSubsets(nums, i+1, ans);
             temp.remove(temp.size()-1);
